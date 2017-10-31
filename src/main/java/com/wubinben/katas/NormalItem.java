@@ -4,7 +4,7 @@ public class NormalItem {
     private final int sellIn;
     private final int quality;
 
-    public NormalItem(int sellIn, int quality) {
+    private NormalItem(int sellIn, int quality) {
         this.sellIn = sellIn;
         this.quality = quality;
     }
@@ -22,6 +22,9 @@ public class NormalItem {
     }
 
     public static NormalItem newInstanceWithSellInAndQuality(int sellIn, int quality) {
+        if (quality > 50 || quality < 0) {
+            throw new IllegalArgumentException("The quality of the normal item should be between 0 and 50.");
+        }
         return new NormalItem(sellIn, quality);
     }
 

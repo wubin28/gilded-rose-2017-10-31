@@ -27,12 +27,17 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void the_quality_of_normal_items_should_be_greater_than_0() {
+    public void the_quality_of_normal_items_should_be_greater_than_or_equal_to_0() {
         NormalItem normalItem = NormalItem.newInstanceWithSellInAndQuality(0, 0);
 
         NormalItem updatedNormalItem = normalItem.updateSellInAndQuality();
 
         assertThat(updatedNormalItem.getSellIn(), is(-1));
         assertThat(updatedNormalItem.getQuality(), is(0));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void the_quality_of_normal_items_should_be_no_more_than_50() {
+        NormalItem normalItem = NormalItem.newInstanceWithSellInAndQuality(0, 51);
     }
 }

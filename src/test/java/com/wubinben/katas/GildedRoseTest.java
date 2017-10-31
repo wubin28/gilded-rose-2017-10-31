@@ -15,4 +15,14 @@ public class GildedRoseTest {
         assertThat(updatedNormalItem.getSellIn(), is(0));
         assertThat(updatedNormalItem.getQuality(), is(19));
     }
+
+    @Test
+    public void once_the_sell_by_date_has_passed_quality_of_normal_items_degrades_twice_as_fast() {
+        NormalItem normalItem = NormalItem.newInstanceWithSellInAndQuality(0, 20);
+
+        NormalItem updatedNormalItem = normalItem.updateSellInAndQuality();
+
+        assertThat(updatedNormalItem.getSellIn(), is(-1));
+        assertThat(updatedNormalItem.getQuality(), is(18));
+    }
 }

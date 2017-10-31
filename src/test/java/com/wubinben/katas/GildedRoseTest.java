@@ -70,4 +70,14 @@ public class GildedRoseTest {
         assertThat(updatedItem.getSellIn(), is(-2));
         assertThat(updatedItem.getQuality(), is(80));
     }
+
+    @Test
+    public void the_quality_of_backstage_passes_increases_by_1_when_the_sellIn_are_more_than_10_days() {
+        Item item = Item.newInstanceWithNameSellInAndQuality("Backstage passes", 11, 20);
+
+        Item updatedItem = item.updateSellInAndQuality();
+
+        assertThat(updatedItem.getSellIn(), is(10));
+        assertThat(updatedItem.getQuality(), is(21));
+    }
 }

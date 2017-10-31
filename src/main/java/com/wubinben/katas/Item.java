@@ -29,6 +29,9 @@ public class Item {
         if (this.name.equals("Aged Brie")) {
             return new Item(this.name, sellIn - 1, notGreaterThanFifty(quality + 1));
         }
+        if (this.name.equals("Backstage passes")) {
+            return new Item(this.name, sellIn - 1, quality + 1);
+        }
         return new Item(this.name, sellIn - 1, notLessThanZero((sellIn <= 0) ? quality - 2 : quality - 1));
     }
 

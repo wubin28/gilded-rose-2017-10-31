@@ -25,4 +25,14 @@ public class GildedRoseTest {
         assertThat(updatedNormalItem.getSellIn(), is(-1));
         assertThat(updatedNormalItem.getQuality(), is(18));
     }
+
+    @Test
+    public void the_quality_of_normal_items_should_be_greater_than_0() {
+        NormalItem normalItem = NormalItem.newInstanceWithSellInAndQuality(0, 0);
+
+        NormalItem updatedNormalItem = normalItem.updateSellInAndQuality();
+
+        assertThat(updatedNormalItem.getSellIn(), is(-1));
+        assertThat(updatedNormalItem.getQuality(), is(0));
+    }
 }

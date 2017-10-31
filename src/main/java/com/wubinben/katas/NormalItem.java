@@ -14,7 +14,11 @@ public class NormalItem {
     }
 
     public NormalItem updateSellInAndQuality() {
-        return new NormalItem(sellIn - 1, (sellIn <= 0) ? quality - 2 : quality - 1);
+        return new NormalItem(sellIn - 1, notLessThanZero((sellIn <= 0) ? quality - 2 : quality - 1));
+    }
+
+    private int notLessThanZero(int quality) {
+        return quality <= 0 ? 0 : quality;
     }
 
     public static NormalItem newInstanceWithSellInAndQuality(int sellIn, int quality) {

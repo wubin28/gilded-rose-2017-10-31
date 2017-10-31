@@ -101,4 +101,14 @@ public class GildedRoseTest {
         assertThat(updatedItem.getQuality(), is(23));
     }
 
+    @Test
+    public void the_quality_of_backstage_passes_drops_to_0_after_the_concert() {
+        Item item = Item.newInstanceWithNameSellInAndQuality("Backstage passes", 0, 20);
+
+        Item updatedItem = item.updateSellInAndQuality();
+
+        assertThat(updatedItem.getSellIn(), is(-1));
+        assertThat(updatedItem.getQuality(), is(0));
+    }
+
 }

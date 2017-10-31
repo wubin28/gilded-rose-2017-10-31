@@ -30,7 +30,7 @@ public class Item {
             return new Item(this.name, sellIn - 1, notGreaterThanFifty(quality + 1));
         }
         if (this.name.equals("Backstage passes")) {
-            return new Item(this.name, sellIn - 1, sellIn > 10 ? quality + 1 : (sellIn > 5 ? quality + 2 : quality + 3));
+            return new Item(this.name, sellIn - 1, sellIn > 10 ? quality + 1 : (sellIn > 5 ? quality + 2 : (sellIn > 0 ? quality + 3 : 0)));
         }
         return new Item(this.name, sellIn - 1, notLessThanZero((sellIn <= 0) ? quality - 2 : quality - 1));
     }

@@ -80,4 +80,25 @@ public class GildedRoseTest {
         assertThat(updatedItem.getSellIn(), is(10));
         assertThat(updatedItem.getQuality(), is(21));
     }
+
+    @Test
+    public void the_quality_of_backstage_passes_increases_by_2_when_the_sellIn_are_between_5_and_10_days() {
+        Item item = Item.newInstanceWithNameSellInAndQuality("Backstage passes", 10, 20);
+
+        Item updatedItem = item.updateSellInAndQuality();
+
+        assertThat(updatedItem.getSellIn(), is(9));
+        assertThat(updatedItem.getQuality(), is(22));
+    }
+
+    @Test
+    public void the_quality_of_backstage_passes_increases_by_3_when_the_sellIn_are_between_0_and_5_days() {
+        Item item = Item.newInstanceWithNameSellInAndQuality("Backstage passes", 5, 20);
+
+        Item updatedItem = item.updateSellInAndQuality();
+
+        assertThat(updatedItem.getSellIn(), is(4));
+        assertThat(updatedItem.getQuality(), is(23));
+    }
+
 }

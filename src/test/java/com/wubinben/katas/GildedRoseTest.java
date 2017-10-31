@@ -111,4 +111,14 @@ public class GildedRoseTest {
         assertThat(updatedItem.getQuality(), is(0));
     }
 
+    @Test
+    public void the_quality_of_backstage_passes_is_not_greater_than_50() {
+        Item item = Item.newInstanceWithNameSellInAndQuality("Backstage passes", 1, 50);
+
+        Item updatedItem = item.updateSellInAndQuality();
+
+        assertThat(updatedItem.getSellIn(), is(0));
+        assertThat(updatedItem.getQuality(), is(50));
+    }
+
 }

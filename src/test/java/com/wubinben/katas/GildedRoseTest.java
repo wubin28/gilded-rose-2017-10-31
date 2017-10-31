@@ -48,6 +48,16 @@ public class GildedRoseTest {
         Item updatedItem = item.updateSellInAndQuality();
 
         assertThat(updatedItem.getSellIn(), is(-1));
-        assertThat(updatedItem.getQuality(), is(0));
+        assertThat(updatedItem.getQuality(), is(1));
+    }
+
+    @Test
+    public void the_Sulfuras_is_a_legendary_item_and_as_such_its_Quality_is_80_and_it_never_alters() {
+        Item item = Item.newInstanceWithNameSellInAndQuality("Sulfuras", -1, 80);
+
+        Item updatedItem = item.updateSellInAndQuality();
+
+        assertThat(updatedItem.getSellIn(), is(-2));
+        assertThat(updatedItem.getQuality(), is(80));
     }
 }

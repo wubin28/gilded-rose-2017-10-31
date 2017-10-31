@@ -27,9 +27,13 @@ public class Item {
             return new Item(this.name, sellIn - 1, quality);
         }
         if (this.name.equals("Aged Brie")) {
-            return new Item(this.name, sellIn - 1, quality + 1);
+            return new Item(this.name, sellIn - 1, notGreaterThanFifty(quality + 1));
         }
         return new Item(this.name, sellIn - 1, notLessThanZero((sellIn <= 0) ? quality - 2 : quality - 1));
+    }
+
+    private int notGreaterThanFifty(int quality) {
+        return quality > 50 ? 50 : quality;
     }
 
     private int notLessThanZero(int quality) {

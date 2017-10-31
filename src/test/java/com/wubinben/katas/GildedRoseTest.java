@@ -52,6 +52,16 @@ public class GildedRoseTest {
     }
 
     @Test
+    public void the_quality_of_Aged_Brie_should_not_exceed_50() {
+        Item item = Item.newInstanceWithNameSellInAndQuality("Aged Brie", -1, 50);
+
+        Item updatedItem = item.updateSellInAndQuality();
+
+        assertThat(updatedItem.getSellIn(), is(-2));
+        assertThat(updatedItem.getQuality(), is(50));
+    }
+
+    @Test
     public void the_Sulfuras_is_a_legendary_item_and_as_such_its_Quality_is_80_and_it_never_alters() {
         Item item = Item.newInstanceWithNameSellInAndQuality("Sulfuras", -1, 80);
 

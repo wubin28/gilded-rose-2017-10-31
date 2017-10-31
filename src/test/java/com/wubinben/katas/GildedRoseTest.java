@@ -40,4 +40,14 @@ public class GildedRoseTest {
     public void the_quality_of_normal_items_should_be_no_more_than_50() {
         NormalItem normalItem = NormalItem.newInstanceWithSellInAndQuality(0, 51);
     }
+
+    @Test
+    public void the_Aged_Brie_actually_increases_in_Quality_by_1_the_older_it_gets() {
+        AgedBrie agedBrie = AgedBrie.newInstanceWithSellInAndQuality(0, 0);
+
+        AgedBrie updatedAgedBrie = agedBrie.updateSellInAndQuality();
+
+        assertThat(updatedAgedBrie.getSellIn(), is(-1));
+        assertThat(updatedAgedBrie.getQuality(), is(0));
+    }
 }

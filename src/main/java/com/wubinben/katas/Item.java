@@ -5,18 +5,21 @@ public class Item {
     public static final String AGED_BRIE = "Aged Brie";
     public static final String BACKSTAGE_PASSES = "Backstage passes";
     public static final String NORMAL = "Normal";
-    private final int sellIn;
-    private final int quality;
-    private final String name;
+    final int sellIn;
+    final int quality;
+    final String name;
 
     public static Item newInstanceWithNameSellInAndQuality(String name, int sellIn, int quality) {
         if (!name.equals(SULFURAS) && (quality > 50 || quality < 0)) {
             throw new IllegalArgumentException("The quality of the normal item should be between 0 and 50.");
         }
+        if (name.equals(NORMAL)) {
+            return new Normal(name, sellIn, quality);
+        }
         return new Item(name, sellIn, quality);
     }
 
-    private Item(String name, int sellIn, int quality) {
+    Item(String name, int sellIn, int quality) {
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
@@ -43,7 +46,7 @@ public class Item {
         return quality > 50 ? 50 : quality;
     }
 
-    private int notLessThanZero(int quality) {
+    int notLessThanZero(int quality) {
         return quality <= 0 ? 0 : quality;
     }
 

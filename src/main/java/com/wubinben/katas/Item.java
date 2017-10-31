@@ -16,6 +16,9 @@ public class Item {
         if (name.equals(NORMAL)) {
             return new Normal(name, sellIn, quality);
         }
+        if (name.equals(SULFURAS)) {
+            return new Sulfuras(name, sellIn, quality);
+        }
         return new Item(name, sellIn, quality);
     }
 
@@ -30,9 +33,6 @@ public class Item {
     }
 
     public Item updateSellInAndQuality() {
-        if (this.name.equals(SULFURAS)) {
-            return new Item(this.name, sellIn - 1, quality);
-        }
         if (this.name.equals(AGED_BRIE)) {
             return new Item(this.name, sellIn - 1, notGreaterThanFifty(quality + 1));
         }

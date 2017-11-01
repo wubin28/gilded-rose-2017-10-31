@@ -48,4 +48,8 @@ public abstract class Item {
     public int getQuality() {
         return this.quality;
     }
+
+    protected int updateSellIn() {
+        return sellIn - 1;
+    }
 }

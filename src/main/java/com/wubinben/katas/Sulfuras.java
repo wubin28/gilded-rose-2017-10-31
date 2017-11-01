@@ -6,6 +6,6 @@ public class Sulfuras extends Item {
     }
 
     public Item updateSellInAndQuality() {
-        return new Sulfuras(this.name, sellIn - 1, quality);
+        return new Sulfuras(super.name, super.updateSellIn(), super.quality);
     }
 }

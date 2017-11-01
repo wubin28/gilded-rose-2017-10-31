@@ -6,6 +6,11 @@ public class Normal extends Item {
     }
 
     public Item updateSellInAndQuality() {
-        return new Normal(this.name, sellIn - 1, notLessThanZero((sellIn <= 0) ? quality - 2 : quality - 1));
+        return new Normal(super.name, super.updateSellIn(), updateQuality());
     }
+
+    private int updateQuality() {
+        return notLessThanZero((sellIn <= 0) ? quality - 2 : quality - 1);
+    }
+
 }

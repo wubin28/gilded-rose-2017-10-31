@@ -6,6 +6,10 @@ public class AgedBrie extends Item {
     }
 
     public Item updateSellInAndQuality() {
-        return new AgedBrie(this.name, sellIn - 1, notGreaterThanFifty(quality + 1));
+        return new AgedBrie(super.name, super.updateSellIn(), updateQuality());
+    }
+
+    private int updateQuality() {
+        return notGreaterThanFifty(quality + 1);
     }
 }

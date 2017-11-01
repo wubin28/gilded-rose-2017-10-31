@@ -48,7 +48,7 @@ public abstract class Item {
     }
 
     public Item updateSellInAndQuality() {
-        return new Normal(this.name, this.updateSellIn(), updateQuality());
+        return newInstanceWithNameSellInAndQuality(this.name, this.updateSellIn(), updateQuality());
     }
 
     protected int updateSellIn() {

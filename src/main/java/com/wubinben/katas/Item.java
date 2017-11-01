@@ -48,4 +48,44 @@ public abstract class Item {
     public int getQuality() {
         return this.quality;
     }
+
+    public static class Normal extends Item {
+        public Normal(String name, int sellIn, int quality) {
+            super(name, sellIn, quality);
+        }
+
+        public Item updateSellInAndQuality() {
+            return new Normal(this.name, sellIn - 1, notLessThanZero((sellIn <= 0) ? quality - 2 : quality - 1));
+        }
+    }
+
+    public static class AgedBrie extends Item {
+        public AgedBrie(String name, int sellIn, int quality) {
+            super(name, sellIn, quality);
+        }
+
+        public Item updateSellInAndQuality() {
+            return new AgedBrie(this.name, sellIn - 1, notGreaterThanFifty(quality + 1));
+        }
+    }
+
+    public static class BackstagePasses extends Item {
+        public BackstagePasses(String name, int sellIn, int quality) {
+            super(name, sellIn, quality);
+        }
+
+        public Item updateSellInAndQuality() {
+            return new BackstagePasses(this.name, sellIn - 1, notGreaterThanFifty(sellIn > 10 ? quality + 1 : (sellIn > 5 ? quality + 2 : (sellIn > 0 ? quality + 3 : 0))));
+        }
+    }
+
+    public static class Sulfuras extends Item {
+        public Sulfuras(String name, int sellIn, int quality) {
+            super(name, sellIn, quality);
+        }
+
+        public Item updateSellInAndQuality() {
+            return new Sulfuras(this.name, sellIn - 1, quality);
+        }
+    }
 }

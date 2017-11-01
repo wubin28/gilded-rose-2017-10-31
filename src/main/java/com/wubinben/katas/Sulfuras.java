@@ -5,7 +5,9 @@ public class Sulfuras extends Item {
         super(name, sellIn, quality);
     }
 
-    public Item updateSellInAndQuality() {
-        return new Sulfuras(super.name, super.updateSellIn(), super.quality);
+    @Override
+    protected int updateQuality() {
+        return super.quality;
     }
+
 }

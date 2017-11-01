@@ -35,8 +35,6 @@ public abstract class Item {
         return this.sellIn;
     }
 
-    public abstract Item updateSellInAndQuality();
-
     int notGreaterThanFifty(int quality) {
         return quality > 50 ? 50 : quality;
     }
@@ -49,7 +47,13 @@ public abstract class Item {
         return this.quality;
     }
 
+    public Item updateSellInAndQuality() {
+        return new Normal(this.name, this.updateSellIn(), updateQuality());
+    }
+
     protected int updateSellIn() {
         return sellIn - 1;
     }
+
+    protected abstract int updateQuality();
 }
